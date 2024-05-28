@@ -42,6 +42,15 @@ $sql = "SELECT *
 // Send SQL query to database
 $results = mysqli_query($conn, $sql);
 
+// If there's a problem with the results show the error
+if ($results === false) {
+  echo mysqli_error($conn);
+
+  // else fetch all the results
+} else {
+  $articles = mysqli_fetch_all($results);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
