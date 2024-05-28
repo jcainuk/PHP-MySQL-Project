@@ -16,7 +16,7 @@ if (mysqli_connect_error()) {
 }
 
 // Print a message if connected successfully
-echo "Connected successfully.";
+//echo "Connected successfully.";
 
 
 // SQL query 
