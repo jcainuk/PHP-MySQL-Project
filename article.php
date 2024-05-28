@@ -28,34 +28,18 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
+<?php require 'header.php' ?>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Blog</title>
-</head>
-
-<body>
-  <header>
-    <h1>My Blog</h1>
-  </header>
-  <main>
-    <?php if ($article === null) : ?>
-      <p>Article not found.</p>
-    <?php else : ?>
+<?php if ($article === null) : ?>
+  <p>Article not found.</p>
+<?php else : ?>
 
 
-      <article>
-        <h2><?= $article['title']; ?></h2>
-        <p><?= $article['content']; ?></p>
-      </article>
+  <article>
+    <h2><?= $article['title']; ?></h2>
+    <p><?= $article['content']; ?></p>
+  </article>
 
+<?php endif; ?>
 
-    <?php endif; ?>
-  </main>
-
-</body>
-
-</html>
+<?php require 'footer.php' ?>
