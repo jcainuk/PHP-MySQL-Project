@@ -19,23 +19,30 @@ if (mysqli_connect_error()) {
 //echo "Connected successfully.";
 
 
-// SQL query 
-$sql = "SELECT *
+// check the id is numeric before passing to sql query
+if (is_numeric($_GET['id'])) {
+  // SQL query 
+  $sql = "SELECT *
         FROM article
         WHERE id = " . $_GET['id'];
 
 
-// Send SQL query to database
-$results = mysqli_query($conn, $sql);
+  // Send SQL query to database
+  $results = mysqli_query($conn, $sql);
 
-// If there's a problem with the results show the error
-if ($results === false) {
-  echo mysqli_error($conn);
+  // If there's a problem with the results show the error
+  if ($results === false) {
+    echo mysqli_error($conn);
 
-  // else fetch all the results
+    // else fetch all the results
+  } else {
+    $article = mysqli_fetch_assoc($results);
+  }
 } else {
-  $article = mysqli_fetch_assoc($results);
+  $article = null;
 }
+
+
 
 ?>
 <!DOCTYPE html>
