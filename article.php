@@ -20,7 +20,7 @@ if (mysqli_connect_error()) {
 
 
 // check the id is numeric before passing to sql query
-if (is_numeric($_GET['id'])) {
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
   // SQL query 
   $sql = "SELECT *
         FROM article
