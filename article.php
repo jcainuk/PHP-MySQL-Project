@@ -1,6 +1,6 @@
 <?php
 
-require 'database.php';
+require 'includes/database.php';
 
 // check the id is numeric before passing to sql query
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
@@ -28,7 +28,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 
 ?>
-<?php require 'header.php' ?>
+<?php require 'includes/header.php' ?>
 
 <?php if ($article === null) : ?>
   <p>Article not found.</p>
@@ -42,4 +42,4 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 <?php endif; ?>
 
-<?php require 'footer.php' ?>
+<?php require 'includes/footer.php' ?>
