@@ -22,7 +22,7 @@ if (mysqli_connect_error()) {
 // SQL query 
 $sql = "SELECT *
         FROM article
-        WHERE id = 1";
+        WHERE id = " . $_GET['id'];
 
 
 // Send SQL query to database
