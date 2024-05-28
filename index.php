@@ -48,7 +48,7 @@ if ($results === false) {
 
   // else fetch all the results
 } else {
-  $articles = mysqli_fetch_all($results);
+  $articles = mysqli_fetch_all($results, MYSQLI_ASSOC);
 }
 
 ?>
