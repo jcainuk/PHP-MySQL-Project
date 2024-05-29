@@ -5,9 +5,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   $sql = "INSERT INTO article (title, content, published_at)
   VALUES(
-    '" . $_POST['title'] . "', '"
-    . $_POST['content'] . "', '"
-    . $_POST['published_at'] . "')";
+    '" . mysqli_escape_string($conn, $_POST['title']) . "', '"
+    . mysqli_escape_string($conn, $_POST['content']) . "', '"
+    . mysqli_escape_string($conn, $_POST['published_at']) . "')";
 
 
 
@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   if ($results === false) {
     echo mysqli_error($conn);
   } else {
+    var_dump($sql);
     $id = mysqli_insert_id($conn);
     echo "Inserted record with ID: $id";
   }
