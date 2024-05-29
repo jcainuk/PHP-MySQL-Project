@@ -1,3 +1,9 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  var_dump($_POST);
+}
+?>
+
 <?php require 'includes/header.php'; ?>
 
 <h2>New Article</h2>
