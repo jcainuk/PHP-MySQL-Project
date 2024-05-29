@@ -48,17 +48,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   <div>
     <label for="title">Title</label>
-    <input name="title" id="title" placeholder="Article title">
+    <input name="title" id="title" placeholder="Article title" required>
   </div>
 
   <div>
     <label for="content">Content</label>
-    <textarea name="content" id="content" placeholder="Article content" rows="4" cols="40"></textarea>
+    <textarea name="content" id="content" placeholder="Article content" rows="4" cols="40" required></textarea>
   </div>
 
   <div>
     <label for="published_at">Publication date and time</label>
-    <input type="datetime-local" name="published_at" id="published_at">
+    <input type="datetime-local" name="published_at" id="published_at" required>
   </div>
 
   <button>Add</button>
