@@ -8,9 +8,13 @@
 </head>
 
 <body>
-  <form action="process_form.php">
-    <input name="search">
+  <form method="post">
+    <input name="username">
+
+    <input type="password" name="password">
+
     <button>Send</button>
+
   </form>
 
 </body>
