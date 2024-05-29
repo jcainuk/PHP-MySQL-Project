@@ -1,6 +1,22 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-  var_dump($_POST);
+
+  $sql = "INSERT INTO article (title, content, published_at)
+  VALUES(
+    '" . $_POST['title'] . "', '"
+    . $_POST['content'] . "', '"
+    . $_POST['published_at'] . "')";
+
+  var_dump($sql);
+  exit;
+
+  $results = mysqli_query($conn, $sql);
+
+  if ($results === false) {
+    echo mysqli_error($conn);
+  } else {
+    $article = mysqli_fetch_assoc($results);
+  }
 }
 ?>
 
