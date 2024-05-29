@@ -3,22 +3,39 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   require 'includes/database.php';
 
+  // Prepared SQL Statement AVOID SQL injection!
+
+  // 1.  Use placeholders ? in the values in SQL
   $sql = "INSERT INTO article (title, content, published_at)
-  VALUES(
-    '" . mysqli_escape_string($conn, $_POST['title']) . "', '"
-    . mysqli_escape_string($conn, $_POST['content']) . "', '"
-    . mysqli_escape_string($conn, $_POST['published_at']) . "')";
+  VALUES( ?, ?, ?)";
 
+  // 2 .  Use prepare (instead of query)
+  // stmt = statement
+  $stmt = mysqli_prepare($conn, $sql);
 
-
-  $results = mysqli_query($conn, $sql);
-
-  if ($results === false) {
+  // if the statement is false ouput error
+  if ($stmt === false) {
     echo mysqli_error($conn);
   } else {
-    var_dump($sql);
-    $id = mysqli_insert_id($conn);
-    echo "Inserted record with ID: $id";
+
+    /*3.  mysqli_stmt_bind_param function
+
+    a.  First bind the statement above
+
+    b. We have 3 string types so we use 3 s like sss  (i for integer etc)
+
+    c. get values from the $_POST superglobal array
+
+    - */
+    mysqli_stmt_bind_param($stmt, "sss", $_POST['title'], $_POST['content'], $_POST['published_at']);
+
+    // 4.  Execute the statement
+    if (mysqli_stmt_execute($stmt)) {
+      $id = mysqli_insert_id($conn);
+      echo "Inserted record with ID: $id";
+    } else {
+      echo mysqli_stmt_error($stmt);
+    }
   }
 }
 ?>
