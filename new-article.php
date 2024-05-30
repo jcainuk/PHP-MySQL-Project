@@ -86,17 +86,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   <div>
     <label for="title">Title</label>
-    <input name="title" id="title" placeholder="Article title" value="<?= $title ?>">
+    <input name="title" id="title" placeholder="Article title" value="<?= htmlspecialchars($title); ?>">
   </div>
 
   <div>
     <label for="content">Content</label>
-    <textarea name="content" id="content" placeholder="Article content" rows="4" cols="40"><?= $content ?></textarea>
+    <textarea name="content" id="content" placeholder="Article content" rows="4" cols="40"><?= htmlspecialchars($content); ?></textarea>
   </div>
 
   <div>
     <label for="published_at">Publication date and time</label>
-    <input type="datetime-local" name="published_at" id="published_at" value="<?= $published_at ?>">
+    <input type="datetime-local" name="published_at" id="published_at" value="<?= htmlspecialchars($published_at); ?>">
   </div>
 
   <button>Add</button>
