@@ -1,7 +1,9 @@
 <?php
+require 'includes/database.php';
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-  require 'includes/database.php';
+  $conn = getDb();
 
   // Prepared SQL Statement AVOID SQL injection!
 

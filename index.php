@@ -2,6 +2,8 @@
 
 require 'includes/database.php';
 
+$conn = getDb();
+
 // SQL query 
 $sql = "SELECT *
         FROM article
