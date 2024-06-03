@@ -19,6 +19,19 @@ if (isset($_GET['id'])) {
   die("id not supplied, article not found");
 }
 
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+  $title = $_POST['title'];
+  $content = $_POST['content'];
+  $published_at = $_POST['published_at'];
+
+  $errors = validateArticle($title, $content, $published_at);
+
+  if (empty($errors)) {
+    die("Form is valid");
+  }
+}
+
 ?>
 
 <?php require 'includes/header.php'; ?>
