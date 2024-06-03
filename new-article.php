@@ -1,5 +1,6 @@
 <?php
 require 'includes/database.php';
+require 'includes/article.php';
 
 $errors = [];
 $title = '';
@@ -12,15 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $content = $_POST['content'];
   $published_at = $_POST['published_at'];
 
-  if ($title === '') {
-    $errors[] = 'Title is required';
-  }
-  if ($content === '') {
-    $errors[] = 'Content is required';
-  }
-  if ($published_at === '') {
-    $errors[] = 'Date is required';
-  }
+  $errors = validateArticle($title, $content, $published_at);
 
   if (empty($errors)) {
 
