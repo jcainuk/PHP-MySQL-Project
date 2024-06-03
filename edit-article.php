@@ -2,6 +2,7 @@
 
 require 'includes/database.php';
 require 'includes/article.php';
+require 'includes/url.php';
 
 $conn = getDb();
 
@@ -60,19 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       // 4.  Execute the statement
       if (mysqli_stmt_execute($stmt)) {
 
-
-
-        // Check if server is using http or https
-        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
-          $protocol = 'https';
-        } else {
-          $protocol = 'http';
-        }
-
-        // redirect to an absolute url 
-        header("Location: $protocol://" . $_SERVER['HTTP_HOST'] . "/cms/article.php?id=$id");
-
-        exit;
+        redirect("/cms/article.php?id=$id");
       } else {
         echo mysqli_stmt_error($stmt);
       }
