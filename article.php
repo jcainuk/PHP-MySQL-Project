@@ -5,7 +5,7 @@ require 'includes/article.php';
 
 $conn = getDb();
 
-// check the id is numeric before passing to sql query
+
 if (isset($_GET['id'])) {
   $article = getArticle($conn, $_GET['id']);
 } else {
