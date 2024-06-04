@@ -2,6 +2,8 @@
 
 require 'includes/database.php';
 
+session_start();
+
 $conn = getDb();
 
 // SQL query 
@@ -24,6 +26,16 @@ if ($results === false) {
 
 ?>
 <?php require 'includes/header.php'; ?>
+
+<?php if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in']) : ?>
+  <p>You are logged in.</p>
+  <a href="logout.php">Log out</a>
+
+<?php else : ?>
+  <p>You are not logged in</p>
+  <a href="login.php">Log in</a>
+
+<?php endif; ?>
 
 <a href="new-article.php">New article</a>
 
