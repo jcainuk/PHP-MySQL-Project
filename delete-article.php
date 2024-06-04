@@ -7,13 +7,10 @@ require 'includes/url.php';
 $conn = getDb();
 
 if (isset($_GET['id'])) {
-  $article = getArticle($conn, $_GET['id']);
+  $article = getArticle($conn, $_GET['id'], 'id');
 
   if ($article) {
     $id = $article['id'];
-    $title = $article['title'];
-    $content = $article['content'];
-    $published_at = $article['published_at'];
   } else {
     die("article not found");
   }
