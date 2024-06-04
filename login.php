@@ -7,6 +7,8 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if ($_POST['username'] == 'jonathan' && $_POST['password'] == 'secret') {
 
+    session_regenerate_id(true);
+
     $_SESSION['is_logged_in'] = true;
 
     redirect('/cms');
