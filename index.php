@@ -1,6 +1,7 @@
 <?php
 
 require 'includes/database.php';
+require 'includes/auth.php';
 
 session_start();
 
@@ -27,7 +28,7 @@ if ($results === false) {
 ?>
 <?php require 'includes/header.php'; ?>
 
-<?php if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in']) : ?>
+<?php if (isLoggedIn()) : ?>
   <p>You are logged in.</p>
   <a href="logout.php">Log out</a>
 
