@@ -1,12 +1,18 @@
 <?php
 
+require('includes/url.php');
+
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if ($_POST['username'] == 'jonathan' && $_POST['password'] == 'secret') {
-    die('login correct');
+
+    $_SESSION['is_logged_in'] = true;
+
+    redirect('/cms');
   } else {
-    die('login incorrect');
+
+    $error = "login incorrect";
   }
 }
 
@@ -15,6 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php require 'includes/header.php'; ?>
 
 <h2>Login</h2>
+
+<?php if (!empty($error)) : ?>
+  <p><?= $error ?></p>
+<?php endif; ?>
 
 <form method="post">
   <div>
