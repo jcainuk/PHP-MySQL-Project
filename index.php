@@ -31,6 +31,8 @@ if ($results === false) {
 <?php if (isLoggedIn()) : ?>
   <p>You are logged in.</p>
   <a href="logout.php">Log out</a>
+  <p><a href="new-article.php">New article</a></p>
+
 
 <?php else : ?>
   <p>You are not logged in</p>
@@ -38,7 +40,7 @@ if ($results === false) {
 
 <?php endif; ?>
 
-<a href="new-article.php">New article</a>
+
 
 <?php if (empty($articles)) : ?>
   <p>No articles found.</p>
