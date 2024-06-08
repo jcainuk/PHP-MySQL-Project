@@ -17,13 +17,9 @@ $sql = "SELECT *
 // Send SQL query to database
 $results = $conn->query($sql);
 
-// If there's a problem with the results show the error
-if ($results === false) {
-  var_dump($conn->errorInfo());
-  // else fetch all the results
-} else {
-  $articles = $results->fetchAll(PDO::FETCH_ASSOC);
-}
+
+$articles = $results->fetchAll(PDO::FETCH_ASSOC);
+
 
 ?>
 <?php require 'includes/header.php'; ?>
