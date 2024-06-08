@@ -1,7 +1,7 @@
-<?php if (!empty($errors)) : ?>
+<?php if (!empty($article->errors)) : ?>
 
   <ul>
-    <?php foreach ($errors as $error) : ?>
+    <?php foreach ($article->errors as $error) : ?>
 
       <li><?= $error ?></li>
 

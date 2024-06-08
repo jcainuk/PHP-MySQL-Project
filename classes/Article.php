@@ -27,6 +27,11 @@ class Article
    * @var datetime
    */
   public $published_at;
+  /**
+   * Validation errors
+   * @var array
+   */
+  public $errors = [];
 
   /**
    * Get all articles
@@ -78,17 +83,45 @@ class Article
    */
   public function update($conn)
   {
-    $sql = "UPDATE article
+    if ($this->validate()) {
+      $sql = "UPDATE article
     SET title = :title, content = :content, published_at = :published_at
     WHERE id = :id";
 
-    $stmt = $conn->prepare($sql);
+      $stmt = $conn->prepare($sql);
 
-    $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
-    $stmt->bindValue(':title', $this->title, PDO::PARAM_STR);
-    $stmt->bindValue(':content', $this->content, PDO::PARAM_STR);
-    $stmt->bindValue(':published_at', $this->published_at, PDO::PARAM_STR);
+      $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+      $stmt->bindValue(':title', $this->title, PDO::PARAM_STR);
+      $stmt->bindValue(':content', $this->content, PDO::PARAM_STR);
+      $stmt->bindValue(':published_at', $this->published_at, PDO::PARAM_STR);
 
-    return $stmt->execute();
+      return $stmt->execute();
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * Validate the article properties
+   * 
+   * @param  string $title Title, required.
+   * @param  string $content Content, required
+   * @param string $published_at Published date and time, required 
+   * 
+   * @return boolean True if the current properties are valid, false otherwise
+   */
+  protected function validate()
+  {
+    if ($this->title === '') {
+      $this->errors[] = 'Title is required';
+    }
+    if ($this->content === '') {
+      $this->errors[] = 'Content is required';
+    }
+    if ($this->published_at === '') {
+      $this->errors[] = 'Date is required';
+    }
+
+    return empty($this->errors);
   }
 }
