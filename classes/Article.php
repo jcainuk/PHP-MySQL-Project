@@ -124,4 +124,23 @@ class Article
 
     return empty($this->errors);
   }
+
+  /**
+   * Delete the current article
+   * 
+   * @param object $conn Connection to the database
+   * 
+   * @return boolean True if the delete was successful, false otherwise
+   */
+  public function delete($conn)
+  {
+    $sql = "DELETE FROM article
+    WHERE id= :id";
+
+    $stmt = $conn->prepare($sql);
+
+    $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+
+    return $stmt->execute();
+  }
 }
