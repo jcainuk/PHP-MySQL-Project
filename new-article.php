@@ -1,6 +1,6 @@
 <?php
-require 'includes/database.php';
-require 'includes/article.php';
+require 'classes/Database.php';
+require 'classes/Article.php';
 require 'includes/url.php';
 require 'includes/auth.php';
 
@@ -10,60 +10,20 @@ if (!isLoggedin()) {
   die('unauthorised');
 }
 
-$errors = [];
-$title = '';
-$content = '';
-$published_at = '';
+$article = new Article();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-  $title = $_POST['title'];
-  $content = $_POST['content'];
-  $published_at = $_POST['published_at'];
+  $db = new Database();
+  $conn = $db->getConn();
 
-  $errors = validateArticle($title, $content, $published_at);
+  $article->title = $_POST['title'];
+  $article->content = $_POST['content'];
+  $article->published_at = $_POST['published_at'];
 
-  if (empty($errors)) {
+  if ($article->create($conn)) {
 
-
-    $conn = getDb();
-
-    // Prepared SQL Statement AVOID SQL injection!
-
-    // 1.  Use placeholders ? in the values in SQL
-    $sql = "INSERT INTO article (title, content, published_at)
-  VALUES( ?, ?, ?)";
-
-    // 2 .  Use prepare (instead of query)
-    // stmt = statement
-    $stmt = mysqli_prepare($conn, $sql);
-
-    // if the statement is false ouput error
-    if ($stmt === false) {
-      echo mysqli_error($conn);
-    } else {
-
-      /*3.  mysqli_stmt_bind_param function
-
-        a.  First bind the statement above
-
-        b. We have 3 string types so we use 3 s like sss  (i for integer etc)
-
-        c. get values from the $_POST superglobal array
-
-        - */
-      mysqli_stmt_bind_param($stmt, "sss", $title, $content, $published_at);
-
-      // 4.  Execute the statement
-      if (mysqli_stmt_execute($stmt)) {
-
-        $id = mysqli_insert_id($conn);
-
-        redirect("/cms/article.php?id=$id");
-      } else {
-        echo mysqli_stmt_error($stmt);
-      }
-    }
+    redirect("/cms/article.php?id={$article->id}");
   }
 }
 ?>
