@@ -69,4 +69,26 @@ class Article
       return $stmt->fetch();
     }
   }
+  /**
+   * Update the article with its current property values
+   * 
+   * @param object $conn Connection to the database
+   * 
+   * @return boolean True if the update was successful, false otherwise
+   */
+  public function update($conn)
+  {
+    $sql = "UPDATE article
+    SET title = :title, content = :content, published_at = :published_at
+    WHERE id = :id";
+
+    $stmt = $conn->prepare($sql);
+
+    $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+    $stmt->bindValue(':title', $this->title, PDO::PARAM_STR);
+    $stmt->bindValue(':content', $this->content, PDO::PARAM_STR);
+    $stmt->bindValue(':published_at', $this->published_at, PDO::PARAM_STR);
+
+    return $stmt->execute();
+  }
 }

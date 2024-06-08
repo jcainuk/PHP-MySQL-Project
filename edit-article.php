@@ -1,20 +1,17 @@
 <?php
 
-require 'includes/database.php';
+require 'classes/Database.php';
+require 'classes/Article.php';
 require 'includes/article.php';
 require 'includes/url.php';
 
-$conn = getDb();
+$db = new Database();
+$conn = $db->getConn();
 
 if (isset($_GET['id'])) {
-  $article = getArticle($conn, $_GET['id']);
+  $article = Article::getById($conn, $_GET['id']);
 
-  if ($article) {
-    $id = $article['id'];
-    $title = $article['title'];
-    $content = $article['content'];
-    $published_at = $article['published_at'];
-  } else {
+  if (!$article) {
     die("article not found");
   }
 } else {
@@ -23,51 +20,22 @@ if (isset($_GET['id'])) {
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-  $title = $_POST['title'];
-  $content = $_POST['content'];
-  $published_at = $_POST['published_at'];
+  $article->title = $_POST['title'];
+  $article->content = $_POST['content'];
+  $article->published_at = $_POST['published_at'];
 
-  $errors = validateArticle($title, $content, $published_at);
+  $errors = validateArticle($article->title, $article->content, $article->published_at);
 
   if (empty($errors)) {
 
-    // Prepared SQL Statement AVOID SQL injection!
 
-    // 1.  Use placeholders ? in the values in SQL
-    $sql = "UPDATE article
-    SET title = ?, content = ?, published_at = ?
-    WHERE id = ?";
+    if ($article->update($conn)) {
 
-    // 2 .  Use prepare (instead of query)
-    // stmt = statement
-    $stmt = mysqli_prepare($conn, $sql);
-
-    // if the statement is false ouput error
-    if ($stmt === false) {
-      echo mysqli_error($conn);
-    } else {
-
-      /*3.  mysqli_stmt_bind_param function
-
-        a.  First bind the statement above
-
-        b. We have 3 string types so we use 3 s like sss  (i for integer etc)
-
-        c. get values from the $_POST superglobal array
-
-        - */
-      mysqli_stmt_bind_param($stmt, "sssi", $title, $content, $published_at, $id);
-
-      // 4.  Execute the statement
-      if (mysqli_stmt_execute($stmt)) {
-
-        redirect("/cms/article.php?id=$id");
-      } else {
-        echo mysqli_stmt_error($stmt);
-      }
+      redirect("/cms/article.php?id={$article->id}");
     }
   }
 }
+
 
 
 ?>
