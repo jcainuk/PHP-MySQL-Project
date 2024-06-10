@@ -1,6 +1,6 @@
 <?php
 
-require('includes/url.php');
+require('classes/Url.php');
 require('classes/User.php');
 require('classes/Database.php');
 
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $_SESSION['is_logged_in'] = true;
 
-    redirect('/cms');
+    Url::redirect('/cms');
   } else {
 
     $error = "login incorrect";

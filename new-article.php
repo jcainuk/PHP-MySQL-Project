@@ -1,7 +1,7 @@
 <?php
 require 'classes/Database.php';
 require 'classes/Article.php';
-require 'includes/url.php';
+require 'classes/url.php';
 require 'classes/Auth.php';
 
 session_start();
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   if ($article->create($conn)) {
 
-    redirect("/cms/article.php?id={$article->id}");
+    Url::redirect("/cms/article.php?id={$article->id}");
   }
 }
 ?>
