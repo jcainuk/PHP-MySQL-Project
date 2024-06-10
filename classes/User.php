@@ -45,12 +45,8 @@ class User
 
     $stmt->execute();
 
-    $user = $stmt->fetch();
-
-    if ($user) {
-      if ($user->password === $password) {
-        return true;
-      }
+    if ($user = $stmt->fetch()) {
+      return $user->password === $password;
     }
   }
 }
