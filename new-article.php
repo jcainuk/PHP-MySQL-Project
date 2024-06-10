@@ -2,11 +2,11 @@
 require 'classes/Database.php';
 require 'classes/Article.php';
 require 'includes/url.php';
-require 'includes/auth.php';
+require 'classes/Auth.php';
 
 session_start();
 
-if (!isLoggedin()) {
+if (!Auth::isLoggedin()) {
   die('unauthorised');
 }
 
