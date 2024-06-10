@@ -1,10 +1,6 @@
 <?php
 
-require('classes/Url.php');
-require('classes/User.php');
-require('classes/Database.php');
-
-session_start();
+require('includes/init.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

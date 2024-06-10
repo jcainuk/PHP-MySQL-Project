@@ -1,10 +1,6 @@
 <?php
-require 'classes/Database.php';
-require 'classes/Article.php';
-require 'classes/url.php';
-require 'classes/Auth.php';
+require 'includes/init.php';
 
-session_start();
 
 if (!Auth::isLoggedin()) {
   die('unauthorised');

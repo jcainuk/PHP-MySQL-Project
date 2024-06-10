@@ -1,10 +1,7 @@
 <?php
 
-require 'classes/Database.php';
-require 'classes/Article.php';
-require 'classes/Auth.php';
+require 'includes/init.php';
 
-session_start();
 
 $db = new Database();
 $conn = $db->getConn();
