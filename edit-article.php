@@ -2,10 +2,17 @@
 
 require 'classes/Database.php';
 require 'classes/Article.php';
+require 'classes/Auth.php';
 require 'includes/url.php';
+
+session_start();
 
 $db = new Database();
 $conn = $db->getConn();
+
+if (!Auth::isLoggedIn()) {
+  die("Unauthorised");
+}
 
 if (isset($_GET['id'])) {
   $article = Article::getById($conn, $_GET['id']);
@@ -28,9 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     redirect("/cms/article.php?id={$article->id}");
   }
 }
-
-
-
 
 ?>
 

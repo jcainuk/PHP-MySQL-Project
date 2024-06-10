@@ -10,7 +10,9 @@ session_start();
 $db = new Database();
 $conn = $db->getConn();
 
-
+if (!Auth::isLoggedIn()) {
+  die("Unauthorised");
+}
 
 
 if (isset($_GET['id'])) {
@@ -33,18 +35,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 ?>
 <?php require 'includes/header.php'; ?>
 
-<?php if (Auth::isLoggedIn()) : ?>
-  <h2>Delete article</h2>
+<h2>Delete article</h2>
 
-  <form method="post">
-    <p>Are you sure?</p>
-    <button>Delete</button>
-    <a href="article.php?id=<?= $article->id; ?>">Cancel</a>
-  </form>
-<?php else : ?>
-  <p>Unauthorised</p>
-<?php endif; ?>
-
-
+<form method="post">
+  <p>Are you sure?</p>
+  <button>Delete</button>
+  <a href="article.php?id=<?= $article->id; ?>">Cancel</a>
+</form>
 
 <?php require 'includes/footer.php'; ?>
