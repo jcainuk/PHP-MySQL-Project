@@ -1,11 +1,12 @@
 <?php
 
 require('includes/url.php');
+require('classes/User.php');
 
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if ($_POST['username'] == 'jonathan' && $_POST['password'] == 'secret') {
+  if (User::authenticate($_POST['username'], $_POST['password'])) {
 
     session_regenerate_id(true);
 
