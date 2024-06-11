@@ -1,12 +1,10 @@
 <?php
 
-require('includes/init.php');
+require('../includes/init.php');
 
-$conn = require 'includes/db.php';
+Auth::requireLogin();
 
-if (!Auth::isLoggedIn()) {
-  die("Unauthorised");
-}
+$conn = require '../includes/db.php';
 
 if (isset($_GET['id'])) {
   $article = Article::getById($conn, $_GET['id']);
@@ -26,16 +24,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   if ($article->update($conn)) {
 
-    Url::redirect("/cms/article.php?id={$article->id}");
+    Url::redirect("/cms/admin/article.php?id={$article->id}");
   }
 }
 
 ?>
 
-<?php require 'includes/header.php'; ?>
+<?php require '../includes/header.php'; ?>
 
 <h2>Edit Article</h2>
 
-<?php require 'includes/article-form.php'; ?>
+<?php require '../includes/article-form.php'; ?>
 
-<?php require 'includes/footer.php'; ?>
+<?php require '../includes/footer.php'; ?>

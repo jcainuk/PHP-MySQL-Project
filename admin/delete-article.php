@@ -1,13 +1,10 @@
 <?php
 
-require 'includes/init.php';
+require '../includes/init.php';
 
-$conn = require 'includes/db.php';
+$conn = require '../includes/db.php';
 
-if (!Auth::isLoggedIn()) {
-  die("Unauthorised");
-}
-
+Auth::requireLogin();
 
 if (isset($_GET['id'])) {
   $article = Article::getById($conn, $_GET['id']);
@@ -22,12 +19,12 @@ if (isset($_GET['id'])) {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
   if ($article->delete($conn)) {
-    Url::redirect("/cms/index.php");
+    Url::redirect("/cms/admin/index.php");
   }
 }
 
 ?>
-<?php require 'includes/header.php'; ?>
+<?php require '../includes/header.php'; ?>
 
 <h2>Delete article</h2>
 
@@ -37,4 +34,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <a href="article.php?id=<?= $article->id; ?>">Cancel</a>
 </form>
 
-<?php require 'includes/footer.php'; ?>
+<?php require '../includes/footer.php'; ?>
