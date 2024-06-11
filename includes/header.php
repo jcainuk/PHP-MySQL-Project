@@ -11,4 +11,14 @@
   <header>
     <h1>My Blog</h1>
   </header>
+
+  <nav>
+    <ul>
+      <?php if (Auth::isLoggedIn()) : ?>
+        <li><a href="logout.php">Log out</a></li>
+      <?php else : ?>
+        <li><a href="login.php">Log in</a></li>
+      <?php endif; ?>
+    </ul>
+  </nav>
   <main>
