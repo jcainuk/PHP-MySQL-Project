@@ -11,10 +11,9 @@ $articles = Article::getAll($conn);
 ?>
 <?php require '../includes/header.php'; ?>
 
-<p><a href="new-article.php">New article</a></p>
-
 <h2>Administration</h2>
 
+<p><a href="new-article.php">New article</a></p>
 <?php if (empty($articles)) : ?>
   <p>No articles found.</p>
 <?php else : ?>
