@@ -16,4 +16,16 @@ class Auth
   {
     return isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'];
   }
+
+  /**
+   * Require the user to be logged in, stopping with an unauthorised message if not
+   * 
+   * @return void
+   */
+  public static function requireLogin()
+  {
+    if (!static::isLoggedIn()) {
+      die("unauthorised");
+    }
+  }
 }
