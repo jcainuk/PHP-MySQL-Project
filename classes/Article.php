@@ -53,6 +53,33 @@ class Article
   }
 
   /**
+   * Get a page of articles
+   * 
+   * @param object $conn Connection to the database
+   * @param integer $limit Number of records to return
+   * @param integer $offset Number of records to skip
+   * 
+   * @return array An associative array of the page of article records
+   */
+  public static function getPage($conn, $limit, $offset)
+  {
+    $sql = "SELECT *
+            FROM article
+            ORDER BY published_at
+            LIMIT :limit
+            OFFSET :offset";
+
+    $stmt = $conn->prepare($sql);
+
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  /**
    * Get the article record base on the ID
    * @param  object $conn Connection to the database.
    * @param  integer $id the article ID.
