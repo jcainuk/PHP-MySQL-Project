@@ -12,11 +12,24 @@ class Paginator
    * @var integer
    */
   public $limit;
+
   /**
    * Number of records to skip before the page
    * @var integer
    */
   public $offset;
+
+  /**
+   * Previous page number
+   * @var integer
+   */
+  public $previous;
+
+  /**
+   * Next page number
+   * @var integer
+   */
+  public $next;
 
   /**
    * Constructor
