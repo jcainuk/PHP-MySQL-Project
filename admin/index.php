@@ -6,7 +6,9 @@ Auth::requireLogin();
 
 $conn = require '../includes/db.php';
 
-$articles = Article::getAll($conn);
+$paginator = new Paginator($_GET['page'] ?? 1, 6, Article::getTotal($conn));
+
+$articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
 
 ?>
 <?php require '../includes/header.php'; ?>
@@ -31,6 +33,26 @@ $articles = Article::getAll($conn);
       <?php endforeach; ?>
     </tbody>
   </table>
+
+  <nav>
+    <ul>
+      <li>
+        <?php if ($paginator->previous) : ?>
+          <a href="/cms/admin/?page=<?= $paginator->previous; ?>">Previous</a>
+        <?php else : ?>
+          Previous
+        <?php endif; ?>
+      </li>
+      <li>
+        <?php if ($paginator->next) : ?>
+          <a href="/cms/admin/?page=<?= $paginator->next; ?>">Next</a>
+        <?php else : ?>
+          Next
+        <?php endif; ?>
+      </li>
+    </ul>
+  </nav>
+
 <?php endif; ?>
 
 <?php require '../includes/footer.php' ?>
