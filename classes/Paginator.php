@@ -50,6 +50,9 @@ class Paginator
       ]
     ]);
 
+    $this->previous = $page - 1;
+    $this->next = $page + 1;
+
     $this->offset = $records_per_page * ($page - 1);
   }
 }
