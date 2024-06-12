@@ -32,7 +32,8 @@ class Paginator
 
     $page = filter_var($page, FILTER_VALIDATE_INT, [
       'options' => [
-        'default' => 1
+        'default' => 1,
+        'min_range' => 1
       ]
     ]);
 
