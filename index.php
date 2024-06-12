@@ -4,7 +4,7 @@ require 'includes/init.php';
 
 $conn = require 'includes/db.php';
 
-$articles = Article::getAll($conn);
+$articles = Article::getPage($conn, 4, 0);
 
 ?>
 <?php require 'includes/header.php'; ?>
