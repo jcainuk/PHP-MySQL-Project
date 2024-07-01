@@ -102,6 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <?php if ($article->image_file) : ?>
   <img src="/cms/uploads/<?= $article->image_file; ?>" alt="">
+  <a href="delete-article-image.php?id=<?= $article->id; ?>">Delete</a>
 <?php endif; ?>
 
 <form method="post" enctype="multipart/form-data">
