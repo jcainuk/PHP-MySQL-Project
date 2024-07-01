@@ -18,6 +18,20 @@ if (isset($_GET['id'])) {
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   var_dump($_FILES);
+
+  try {
+    switch ($_FILES['file']['error']) {
+      case UPLOAD_ERR_OK:
+        break;
+      case UPLOAD_ERR_NO_FILE:
+        throw new Exception('No file uploaded');
+        break;
+      default:
+        throw new Exception('An error occurred');
+    }
+  } catch (Exception $e) {
+    echo $e->getMessage();
+  }
 }
 
 ?>
