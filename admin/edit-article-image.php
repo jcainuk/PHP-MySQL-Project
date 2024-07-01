@@ -92,6 +92,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <h2>Edit Article Image</h2>
 
+<?php if ($article->image_file) : ?>
+  <img src="/cms/uploads/<?= $article->image_file; ?>" alt="">
+<?php endif; ?>
+
 <form method="post" enctype="multipart/form-data">
   <div>
     <label for="file">Image file</label>
