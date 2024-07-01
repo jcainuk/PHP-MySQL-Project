@@ -75,8 +75,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 
     if (move_uploaded_file($_FILES['file']['tmp_name'], $destination)) {
+
+      $previous_image = $article->image_file;
+
       if ($article->setImageFile($conn, $filename)) {
-        Url::redirect("/cms/admin/article.php?id={$article->id}");
+
+        if ($previous_image) {
+          unlink("../uploads/$previous_image");
+        }
+
+        Url::redirect("/cms/admin/edit-article-image.php?id={$article->id}");
       }
     } else {
       throw new Exception('Unable to move uploaded file');
