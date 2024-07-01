@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <label for="file">Image file</label>
     <input type="file" name="file" id="file">
   </div>
+  <button>Upload</button>
 </form>
 
 <?php require '../includes/footer.php'; ?>
