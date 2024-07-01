@@ -25,4 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <h2>Edit Article Image</h2>
 
+<form method="post" enctype="multipart/form-data">
+  <div>
+    <label for="file">Image file</label>
+    <input type="file" name="file" id="file">
+  </div>
+</form>
+
 <?php require '../includes/footer.php'; ?>
