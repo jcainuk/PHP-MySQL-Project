@@ -118,7 +118,7 @@ class Article
   public static function getWithCategories($conn, $id)
   {
 
-    $sql = "SELECT *
+    $sql = "SELECT article.*, category.name AS category_name
             FROM article
             LEFT JOIN article_category
             ON article.id = article_category.article_id
