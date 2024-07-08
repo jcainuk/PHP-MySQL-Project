@@ -17,6 +17,8 @@ if (isset($_GET['id'])) {
 }
 
 var_dump($article->getCategories($conn));
+$categories = Category::getAll($conn);
+var_dump($categories);
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
