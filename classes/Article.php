@@ -156,7 +156,7 @@ class Article
             WHERE article.id = :id";
 
     if ($only_published) {
-      $sql .= 'AND article.published_at IS NOT NULL';
+      $sql .= ' AND article.published_at IS NOT NULL';
     }
 
     $stmt = $conn->prepare($sql);
