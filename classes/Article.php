@@ -209,7 +209,7 @@ class Article
       $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
       $stmt->bindValue(':title', $this->title, PDO::PARAM_STR);
       $stmt->bindValue(':content', $this->content, PDO::PARAM_STR);
-      $stmt->bindValue(':published_at', $this->published_at, PDO::PARAM_STR);
+      $stmt->bindValue(':published_at', $this->published_at ? $this->published_at : null, $this->published_at ? PDO::PARAM_STR : PDO::PARAM_NULL);
 
       return $stmt->execute();
     } else {
@@ -283,9 +283,7 @@ class Article
     if ($this->content === '') {
       $this->errors[] = 'Content is required';
     }
-    if ($this->published_at === '') {
-      $this->errors[] = 'Date is required';
-    }
+
 
     return empty($this->errors);
   }
@@ -326,7 +324,7 @@ class Article
 
       $stmt->bindValue(':title', $this->title, PDO::PARAM_STR);
       $stmt->bindValue(':content', $this->content, PDO::PARAM_STR);
-      $stmt->bindValue(':published_at', $this->published_at, PDO::PARAM_STR);
+      $stmt->bindValue(':published_at', $this->published_at ? $this->published_at : null, $this->published_at ? PDO::PARAM_STR : PDO::PARAM_NULL);
 
       if ($stmt->execute()) {
         $this->id = $conn->lastInsertId();
