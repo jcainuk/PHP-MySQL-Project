@@ -13,6 +13,9 @@ $("a.delete").on("click", function (e) {
   }
 });
 
+/**
+ * Add a method to validate a date time string
+ */
 $.validator.addMethod(
   "dateTime",
   function (value, element) {
@@ -21,6 +24,9 @@ $.validator.addMethod(
   "Must be a valid date and time"
 );
 
+/**
+ * Validate the article form
+ */
 $("#formArticle").validate({
   rules: {
     title: {
@@ -33,4 +39,17 @@ $("#formArticle").validate({
       dateTime: true
     }
   }
+});
+
+$("button.publish").on("click", function (e) {
+  var id = $(this).data("id");
+  var button = $(this);
+
+  $.ajax({
+    url: "/admin/publish-article.php",
+    type: "POST",
+    data: { id: id }
+  }).done(function (data) {
+    button.parent().html(data);
+  });
 });
