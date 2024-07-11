@@ -141,7 +141,7 @@ class Article
    * 
    * @return array The article data with categories
    */
-  public static function getWithCategories($conn, $id)
+  public static function getWithCategories($conn, $id, $only_published = false)
   {
 
     $sql = "SELECT article.*, category.name AS category_name
@@ -151,6 +151,10 @@ class Article
             LEFT JOIN category
             ON article_category.category_id = category.id
             WHERE article.id = :id";
+
+    if ($only_published) {
+      $sql .= 'AND article.published_at IS NOT NULL';
+    }
 
     $stmt = $conn->prepare($sql);
     $stmt->bindValue(':id', $id, PDO::PARAM_INT);
