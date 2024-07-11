@@ -66,11 +66,14 @@ class Article
    * 
    * @return array An associative array of the page of article records
    */
-  public static function getPage($conn, $limit, $offset)
+  public static function getPage($conn, $limit, $offset, $only_published = false)
   {
+    $condition = $only_published ? ' WHERE published_at IS NOT NULL' : '';
+
     $sql = "SELECT a.*, category.name AS category_name
             FROM (SELECT *
             FROM article
+            $condition
             ORDER BY published_at
             LIMIT :limit
             OFFSET :offset) AS a
@@ -341,9 +344,12 @@ class Article
    * 
    * @return integer The total number of records
    */
-  public static function getTotal($conn)
+  public static function getTotal($conn, $only_published = false)
   {
-    return $conn->query('SELECT COUNT(*) FROM article')->fetchColumn();
+
+    $condition = $only_published ? ' WHERE published_at IS NOT NULL' : '';
+
+    return $conn->query("SELECT COUNT(*) FROM article$condition")->fetchColumn();
   }
 
   /**
