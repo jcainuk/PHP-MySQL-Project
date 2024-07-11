@@ -28,16 +28,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php endif; ?>
 
 <form method="post">
-  <div>
+  <div class="form-group">
     <label for="username">Username</label>
-    <input type="text" name="username" id="username">
+    <input type="text" name="username" id="username" class="form-control">
   </div>
-  <div>
+  <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" name="password" id="password">
+    <input type="password" name="password" id="password" class="form-control">
   </div>
 
-  <button>Log in</button>
+  <button class="btn">Log in</button>
 </form>
 
 <?php require 'includes/footer.php'; ?>
