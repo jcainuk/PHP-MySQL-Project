@@ -46,7 +46,7 @@ $("button.publish").on("click", function (e) {
   var button = $(this);
 
   $.ajax({
-    url: "/admin/publish-article.php",
+    url: "/cms/admin/publish-article.php",
     type: "POST",
     data: { id: id }
   }).done(function (data) {
