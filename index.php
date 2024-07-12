@@ -28,7 +28,8 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset, true)
           <?php if ($article['category_names']) : ?>
             <p>Categories:
               <?php foreach ($article['category_names'] as $name) : ?>
-                <?= htmlspecialchars($name ?? ""); ?>
+
+                <span class="badge bg-info text-dark"><?= htmlspecialchars($name ?? ""); ?></span>
               <?php endforeach; ?>
             </p>
           <?php endif; ?>
