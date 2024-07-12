@@ -49,7 +49,11 @@ $("button.publish").on("click", function (e) {
     url: "/cms/admin/publish-article.php",
     type: "POST",
     data: { id: id }
-  }).done(function (data) {
-    button.parent().html(data);
-  });
+  })
+    .done(function (data) {
+      button.parent().html(data);
+    })
+    .fail(function (data) {
+      alert("An error occurred");
+    });
 });
