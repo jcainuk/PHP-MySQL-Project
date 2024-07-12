@@ -21,25 +21,28 @@ if (isset($_GET['id'])) {
 
   <article>
     <h2><?= htmlspecialchars($article[0]['title']); ?></h2>
+    <div>
+      <?php if ($article[0]['published_at']) : ?>
+        <time><?= $article[0]['published_at'] ?></time>
+    </div>
+  <?php else : ?>
+    <div>Unpublished</div>
+  <?php endif; ?>
 
-    <?php if ($article[0]['published_at']) : ?>
-      <time><?= $article[0]['published_at'] ?></time>
-    <?php else : ?>
-      Unpublished
-    <?php endif; ?>
-
-    <?php if ($article[0]['category_name']) : ?>
-      <p>Categories</p>
+  <?php if ($article[0]['category_name']) : ?>
+    <p>Categories</p>
+    <div>
       <?php foreach ($article as $a) : ?>
         <span class="badge bg-info text-dark"><?= htmlspecialchars($a['category_name']); ?></span>
       <?php endforeach; ?>
-    <?php endif; ?>
+    </div>
+  <?php endif; ?>
 
-    <?php if ($article[0]['image_file']) : ?>
-      <img src="/cms/uploads/<?= $article[0]['image_file']; ?>" alt="">
-    <?php endif; ?>
+  <?php if ($article[0]['image_file']) : ?>
+    <img src="/cms/uploads/<?= $article[0]['image_file']; ?>" alt="">
+  <?php endif; ?>
 
-    <p><?= htmlspecialchars($article[0]['content']); ?></p>
+  <p><?= htmlspecialchars($article[0]['content']); ?></p>
   </article>
 
   <a href="edit-article.php?id=<?= $article[0]['id']; ?>">Edit</a>
