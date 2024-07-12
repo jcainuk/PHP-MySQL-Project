@@ -24,6 +24,8 @@
         <?php else : ?>
           <li class="nav-item"><a class="nav-link" href="/cms/login.php">Log in</a></li>
         <?php endif; ?>
+
+        <li class="nav-item"><a class="nav-link" href="/cms/contact.php">Contact</a></li>
       </ul>
     </nav>
     <main>
