@@ -12,7 +12,7 @@
 <body>
   <div class="container">
     <header>
-      <h1>My Blog</h1>
+      <h1>Yoga Bliss Blog</h1>
     </header>
 
     <nav>

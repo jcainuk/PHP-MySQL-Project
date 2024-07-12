@@ -26,7 +26,7 @@ if (isset($_GET['id'])) {
     <?php if ($article[0]['category_name']) : ?>
       <p>Categories</p>
       <?php foreach ($article as $a) : ?>
-        <?= htmlspecialchars($a['category_name']); ?>
+        <span class="badge bg-info text-dark"><?= htmlspecialchars($a['category_name']); ?></span>
       <?php endforeach; ?>
     <?php endif; ?>
 
