@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </ul>
 <?php endif; ?>
 
-<form method="post">
+<form method="post" id="formContact">
   <div class="form-group">
     <label for="email">Your email</label>
     <input class="form-control" type="email" id="email" placeholder="Your email" name="email" value="<?= htmlspecialchars($email) ?>">
