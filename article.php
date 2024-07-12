@@ -15,29 +15,37 @@ if (isset($_GET['id'])) {
 <?php require 'includes/header.php' ?>
 
 <?php if ($article) : ?>
+  <div class="container mt-4 mx-auto">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8">
+        <article class="card">
+          <div class="card-body">
+            <h2 class="card-title text-center"><?= htmlspecialchars($article[0]['title']); ?></h2>
 
-  <article>
-    <h2><?= htmlspecialchars($article[0]['title']); ?></h2>
+            <time datetime=" <?= $article[0]['published_at'] ?>">
+              <?php $datetime = new DateTime($article[0]['published_at']);
+              echo $datetime->format("j F, Y"); ?></time>
 
-    <time datetime="<?= $article[0]['published_at'] ?>">
-      <?php $datetime = new DateTime($article[0]['published_at']);
-      echo $datetime->format("j F, Y"); ?></time>
+            <?php if ($article[0]['category_name']) : ?>
+              <div>
+                <div><span>Categories: </span>
+                  <?php foreach ($article as $a) : ?>
+                    <span class="badge bg-info text-dark"><?= htmlspecialchars($a['category_name']); ?></span>
+                  <?php endforeach; ?>
+                </div>
+              </div>
+            <?php endif; ?>
 
-    <?php if ($article[0]['category_name']) : ?>
-      <div>
-        <p>Categories</p>
-        <?php foreach ($article as $a) : ?>
-          <span class="badge bg-info text-dark"><?= htmlspecialchars($a['category_name']); ?></span>
-        <?php endforeach; ?>
+            <?php if ($article[0]['image_file']) : ?>
+              <img class="card-img-top" src="/cms/uploads/<?= $article[0]['image_file']; ?>" alt="">
+            <?php endif; ?>
+
+            <p class="card-text"><?= htmlspecialchars($article[0]['content']); ?></p>
+          </div>
+        </article>
       </div>
-    <?php endif; ?>
-
-    <?php if ($article[0]['image_file']) : ?>
-      <img src="/cms/uploads/<?= $article[0]['image_file']; ?>" alt="">
-    <?php endif; ?>
-
-    <p><?= htmlspecialchars($article[0]['content']); ?></p>
-  </article>
+    </div>
+  </div>
 
 <?php else : ?>
 
