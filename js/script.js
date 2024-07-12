@@ -53,18 +53,3 @@ $("button.publish").on("click", function (e) {
     button.parent().html(data);
   });
 });
-
-$("#formContact").validate({
-  rules: {
-    email: {
-      required: true,
-      email: true
-    },
-    subject: {
-      required: true
-    },
-    message: {
-      required: true
-    }
-  }
-});
