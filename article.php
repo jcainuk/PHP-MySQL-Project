@@ -24,10 +24,12 @@ if (isset($_GET['id'])) {
       echo $datetime->format("j F, Y"); ?></time>
 
     <?php if ($article[0]['category_name']) : ?>
-      <p>Categories</p>
-      <?php foreach ($article as $a) : ?>
-        <span class="badge bg-info text-dark"><?= htmlspecialchars($a['category_name']); ?></span>
-      <?php endforeach; ?>
+      <div>
+        <p>Categories</p>
+        <?php foreach ($article as $a) : ?>
+          <span class="badge bg-info text-dark"><?= htmlspecialchars($a['category_name']); ?></span>
+        <?php endforeach; ?>
+      </div>
     <?php endif; ?>
 
     <?php if ($article[0]['image_file']) : ?>
