@@ -34,7 +34,7 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset, true)
             </p>
           <?php endif; ?>
 
-          <p><?= htmlspecialchars($article['content']); ?></p>
+          <!-- <p><?= htmlspecialchars($article['content']); ?></p> -->
         </article>
       </li>
     <?php endforeach; ?>
