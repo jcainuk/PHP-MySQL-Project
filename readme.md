@@ -41,7 +41,7 @@ This project is a Content Management System (CMS) for a yoga blog, built using P
 
 Access the live yoga blog [here](https://magenta-starling-620679.hostingersite.com/)
 
-1. **Login:** Navigate [here](https://magenta-starling-620679.hostingersite.com/) click **Log in** and enter the following credentials:
+1. **Login:** Navigate to the login page and click 'Log in', then enter the following credentials:
 
 ```
 
@@ -50,8 +50,8 @@ PASSWORD: secret
 
 ```
 
-2. **Create Content:** Use the admin panel to create, edit and elete new posts and images, and manage existing ones.
-3. **Publish an Article:** If an article is created without a published date then it will be hidden on the main index page. However clicking publish next to article from the admin section will publish it to the live site.
+2. **Create Content:** Use the admin panel to create, edit, and delete new posts and images, and manage existing ones.
+3. **Publish an Article:** Articles created without a published date will be hidden on the main index page. Click publish next to an article in the admin section to publish it to the live site.
 4. **Browse Blog:** Visit the homepage to view the latest yoga articles and resources.
 
 ## Folder Structure
