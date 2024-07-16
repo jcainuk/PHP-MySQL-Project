@@ -8,7 +8,7 @@ This project is a Content Management System (CMS) for a yoga blog, built using P
 
 ## Features
 
-- **Dynamic Content Management:** Easily create and manage blog posts, categories, and images.
+- **Dynamic Content Management:** Easily create, manage and delete blog posts, categories, and images.
 - **User Authentication:** Secure login for users.
 - **CRUD Operations:** Full create, read, update, and delete functionalities for managing content.
 - **File Uploads:** Support for uploading images and other media.
@@ -38,7 +38,7 @@ PASSWORD: secret
 
 ```
 
-2. **Create Content:** Use the admin panel to create new posts and manage existing ones.
+2. **Create Content:** Use the admin panel to create, edit and elete new posts and images, and manage existing ones.
 3. **Publish an Article:** If an article is created without a published date then it will be hidden on the main index page. However clicking publish next to article from the admin section will publish it to the live site.
 4. **Browse Blog:** Visit the homepage to view the latest yoga articles and resources.
 
