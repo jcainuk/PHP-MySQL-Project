@@ -20,8 +20,6 @@ This project is a Content Management System (CMS) for a yoga blog, built using P
 - [Screenshots](#screenshots)
 - [Contact](#contact)
 
----
-
 ## Features
 
 - **Dynamic Content Management:** Easily create, manage and delete blog posts, categories, and images.
