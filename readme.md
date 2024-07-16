@@ -44,13 +44,6 @@ PASSWORD: secret
 
 ---
 
-## Database Setup
-
-1. **Import SQL Schema:** Use the provided `database_schema.sql` file to set up the necessary tables in your MySQL database.
-2. **Create an Admin User:** Register through the application or manually insert an admin user into the database for access.
-
----
-
 ## Screenshots
 
 ![Main Page](/uploads/screenshot1.png)
@@ -73,11 +66,3 @@ _Create new article_
 ## Contact
 
 - **Website:** [My Portfolio Website](https://jcainuk.netlify.app/)
-
----
-
-Feel free to modify this template to better fit your project's specifics!
-
-```
-
-```
