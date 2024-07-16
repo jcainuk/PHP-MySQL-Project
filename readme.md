@@ -83,44 +83,45 @@ This structure helps organize the different components of the CMS effectively, s
 
 - Above is a diagram with the overall folder organization of the project.
 - Note the folder separation of front-end components (/CSS, /JS) and back-end components
-  (/classes, /includes etc.)
+  (/classes, etc.)
 
 ### 2. Understanding Key Files
 
 - **config.php:**
-  - Check how database connections are established.
-  - Look for any constants or settings that configure the application.
+
+  - How database connection is established.
+
 - **index.php:**
-  - Identify how routing is handled.
-  - Understand the flow of the application as users interact with it.
+  - Main application as users interact with it.
 
 ### 3. Exploring Core Functionality
 
 - **/admin Directory:**
-  - Review files related to the admin panel for managing content, user roles, and settings.
+  - Files related to the admin panel for managing content, user roles, and settings.
 - **/classes Directory:**
-  - Look into each class to understand its purpose and how it implements object-oriented programming (OOP) principles.
+  - Each class implements object-oriented programming (OOP) principles.
 
 ### 4. Look at Content Management
 
 - **article.php:**
-  - Analyze how articles are fetched from the database and displayed.
-  - Understand the query structure and data processing.
+
+  - How individual articles are fetched from the database and displayed.
+
 - **/uploads Directory:**
-  - Review how file uploads are handled, including any validation and security measures.
+  - Folder for image uploads
 
 ### 5. Front-End Components
 
 - **/css Directory:**
-  - Examine the stylesheets for the layout and design.
-  - Look for responsive design practices.
+
+  - Stylesheets for the layout and design.
+
 - **/js Directory:**
-  - Inspect JavaScript files for client-side interactions, form validations, and AJAX calls.
+  - JavaScript files for client-side interactions, form validations, and AJAX calls.
 
-### 6. .htaccess and Routing
+### 6. .htaccess
 
-- Understand how the `.htaccess` file controls URL rewriting for clean URLs.
-- Check for any rules that manage access control and redirects.
+- Rules that manage access control, file upload sizes.
 
 ## Screenshots
 
