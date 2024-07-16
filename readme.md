@@ -4,8 +4,6 @@
 
 This project is a Content Management System (CMS) for a yoga blog, built using PHP and MySQL. It allows users to create, manage, and share yoga-related content dynamically, utilizing best practices in web development.
 
----
-
 ## Table of Contents
 
 - [Features](#features)
@@ -32,16 +30,12 @@ This project is a Content Management System (CMS) for a yoga blog, built using P
 - **File Uploads:** Support for uploading images and other media.
 - **Bootstrap Styling:** Responsive design using Bootstrap for an appealing user interface.
 
----
-
 ## Technologies Used
 
 - **PHP:** Server-side scripting language for dynamic content.
 - **MySQL:** Relational database management system for storing data.
 - **HTML/CSS/jQuery:** Frontend technologies for structure and interactivity.
 - **Bootstrap:** Frontend framework for responsive design.
-
----
 
 ## Usage
 
@@ -59,8 +53,6 @@ PASSWORD: secret
 2. **Create Content:** Use the admin panel to create, edit and elete new posts and images, and manage existing ones.
 3. **Publish an Article:** If an article is created without a published date then it will be hidden on the main index page. However clicking publish next to article from the admin section will publish it to the live site.
 4. **Browse Blog:** Visit the homepage to view the latest yoga articles and resources.
-
----
 
 ## Folder Structure
 
@@ -84,8 +76,6 @@ Here’s a visual representation of the folder structure for the Yoga Blog CMS:
 ```
 
 This structure helps organize the different components of the CMS effectively, separating admin functions, classes, assets, and core functionalities.
-
----
 
 ## How to Understand the Project
 
@@ -132,8 +122,6 @@ This structure helps organize the different components of the CMS effectively, s
 - Understand how the `.htaccess` file controls URL rewriting for clean URLs.
 - Check for any rules that manage access control and redirects.
 
----
-
 ## Screenshots
 
 ![Main Page](/uploads/screenshot1.png)
@@ -150,8 +138,6 @@ _Admin dashboard_
 
 ![Create new article](/uploads/screenshot5.png)
 _Create new article_
-
----
 
 ## Contact
 
