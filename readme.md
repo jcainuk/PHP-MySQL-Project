@@ -62,6 +62,12 @@ _Main page overview of the CMS_
 ![Log in screen](/uploads/screenshot3.png)
 _Log in screen_
 
+![Admin dashboard](/uploads/screenshot4.png)
+_Admin dashboard_
+
+![Create new article](/uploads/screenshot5.png)
+_Create new article_
+
 ---
 
 ## Contact
