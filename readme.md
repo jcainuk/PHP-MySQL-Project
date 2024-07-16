@@ -66,6 +66,7 @@ PASSWORD: secret
 
 Here’s a visual representation of the folder structure for the Yoga Blog CMS:
 
+```
 /yoga-blog-cms
 │
 ├── /admin # Admin panel files for managing content
@@ -80,6 +81,7 @@ Here’s a visual representation of the folder structure for the Yoga Blog CMS:
 ├── index.php # Main entry point for the application
 ├── login.php # Login page for user authentication
 └── logout.php # Logout functionality for users
+```
 
 This structure helps organize the different components of the CMS effectively, separating admin functions, classes, assets, and core functionalities.
 
